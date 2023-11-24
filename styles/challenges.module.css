@@ -1,0 +1,6 @@
+.form {
+  display: grid;
+  justify-self: center;
+  border: 2px solid crimson;
+  background-color: crimson;
+}
