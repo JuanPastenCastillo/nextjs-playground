@@ -1,9 +1,9 @@
 import { ChallengeWrapper } from "./styles/ChallengeWrapper"
 
-export const Challenge_1 = () => {
+export const Challenge_4 = () => {
   return (
     <ChallengeWrapper>
-      <h2>Challenge_1</h2>
+      <h2>Challenge_4</h2>
     </ChallengeWrapper>
   )
 }

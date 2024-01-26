@@ -27,9 +27,17 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/challenges-useReducer/[slug].js"
+    "pages/challenges-useReducer/[slug].js",
+    "hooks/useWidthSize.js",
+    "utils/testingType.test.ts",
+    "utils/my-test.test.js",
+    "utils/test-debug.test.js",
+    "utils/toBeTypeOf.test.js",
   ],
   "exclude": [
     "node_modules"
+  ],
+  "types": [
+    "vitest/importMeta"
   ]
 }

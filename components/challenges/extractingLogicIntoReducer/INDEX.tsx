@@ -1,17 +1,31 @@
 import { IsValidSlug_PROPS } from "@/utils/useIsValidSlug"
-import { Challenge_1 } from "./1/Challenge_1"
+import { useRouter as useNavigation } from "next/navigation"
+import { Dispatch_actions_from_event_handlers } from "./1/Dispatch_actions_from_event_handlers"
 import { Challenge_2 } from "./2/Challenge_2"
-import { Challenge_3 } from "./3/Challenge_3"
+import { Challenge_4 } from "./4/Challenge_4"
 import { ExtractingLogicIntoReducerWrapper } from "./styles/ExtractingLogicIntoReducerWrapper"
 
-const allChallenges = [Challenge_1, Challenge_2, Challenge_3]
+/**
+ * Challenges comes from this page: https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges
+
+//!FH0
+*/
+
+export const ExtractingLogicIntoReducer_allChallenges = [Dispatch_actions_from_event_handlers, Challenge_2, Challenge_4]
 
 export const ExtractingLogicIntoReducer = (isValidSlug: IsValidSlug_PROPS) => {
-  let TheComponent = allChallenges[Number(isValidSlug.theSlug?.[1]) - 1]
+  let TheComponent = ExtractingLogicIntoReducer_allChallenges[Number(isValidSlug.theSlug?.[1]) - 1]
+
+  let navigate = useNavigation()
+
+  let goPrevious = () => {
+    navigate.push("/challenges")
+  }
 
   return (
     <ExtractingLogicIntoReducerWrapper>
       <h2>{isValidSlug.getTitle}</h2>
+      <p onClick={goPrevious}>Click here to go back</p>
 
       <TheComponent />
     </ExtractingLogicIntoReducerWrapper>

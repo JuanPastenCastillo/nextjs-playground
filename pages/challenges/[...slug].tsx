@@ -4,10 +4,6 @@ import { useRouter as useNavigation } from "next/navigation"
 import { useRouter } from "next/router"
 import { AcceptedRoutes_Challenges_ENUM } from "."
 
-const howManyChallenges = Array(3)
-  .fill(0)
-  .map((x) => x)
-
 export default function Slug() {
   const router = useRouter()
   // console.log("router:", router)
@@ -36,6 +32,7 @@ export default function Slug() {
           ) : (
             <>
               <h2>Another component for sure</h2>
+              <p onClick={goPrevious}>Click here to go back</p>
             </>
           )}
         </>

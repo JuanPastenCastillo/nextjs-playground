@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot only shape 1`] = `
+{
+  "foo": Any<Set>,
+}
+`;
+
+exports[`matches snapshot strict 1`] = `
+{
+  "foo": Set {
+    "bar",
+    "snapshot",
+  },
+}
+`;

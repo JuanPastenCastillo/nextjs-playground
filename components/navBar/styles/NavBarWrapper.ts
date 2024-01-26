@@ -17,8 +17,9 @@ export const NavBarWrapper = styled.div<Props>`
     list-style: none;
 
     display: grid;
+    grid-auto-flow: column;
     place-items: center;
-    grid-template-columns: auto 1fr;
+    /* grid-template-columns: auto 1fr; */
 
     font-size: 24px;
 

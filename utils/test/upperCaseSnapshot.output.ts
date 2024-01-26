@@ -1,0 +1,1 @@
+let toUpperCaseResult = "SOME STRING, IT WORK? IS DIFFERENTE =). SOME CHANGES HERE..."

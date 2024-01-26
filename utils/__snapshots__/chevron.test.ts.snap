@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`toThrowErrorMatchingSnapshot > hint 1`] = `[Error: error]`;

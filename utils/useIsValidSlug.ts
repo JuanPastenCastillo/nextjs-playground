@@ -13,8 +13,11 @@ export const useIsValidSlug = ({ allRouter, routerReady }: { allRouter: any; rou
     let workWithPath = allRouter.asPath.split("/").slice(2, 4)
 
     let isLength2 = workWithPath.length === 2
+
     let firstValueIsCorrect = isLength2 && Object.values(AcceptedRoutes_Challenges_ENUM).some((x) => x === workWithPath[0])
+
     let secondValueIsNumber = isLength2 && typeof Number(workWithPath[1]) === "number" && !isNaN(Number(workWithPath[1])) && Number(workWithPath[1]) > 0
+
     let isSecondValueIsInRange =
       isLength2 &&
       secondValueIsNumber &&
