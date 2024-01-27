@@ -8,13 +8,20 @@ import { ExtractingLogicIntoReducerWrapper } from "./styles/ExtractingLogicIntoR
 /**
  * Challenges comes from this page: https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges
 
-//!FH0
+//!FH
 */
 
-export const ExtractingLogicIntoReducer_allChallenges = [Dispatch_actions_from_event_handlers, Challenge_2, Challenge_4]
+export const ExtractingLogicIntoReducer_allChallenges = [
+  Dispatch_actions_from_event_handlers,
+  Challenge_2,
+  Challenge_4,
+]
 
 export const ExtractingLogicIntoReducer = (isValidSlug: IsValidSlug_PROPS) => {
-  let TheComponent = ExtractingLogicIntoReducer_allChallenges[Number(isValidSlug.theSlug?.[1]) - 1]
+  let TheComponent =
+    ExtractingLogicIntoReducer_allChallenges[
+      Number(isValidSlug.theSlug?.[1]) - 1
+    ]
 
   let navigate = useNavigation()
 

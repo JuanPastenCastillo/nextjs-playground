@@ -1,7 +1,7 @@
 import { ChallengeWrapper } from "./styles/ChallengeWrapper"
 
 /* 
-!FH0
+!FH
 https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges (1)
 
 
