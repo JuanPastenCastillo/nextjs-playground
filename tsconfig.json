@@ -33,6 +33,9 @@
     "utils/my-test.test.js",
     "utils/test-debug.test.js",
     "utils/toBeTypeOf.test.js",
+    "utils/returns.test.js",
+    "utils/parameters.test.js",
+    "utils/parameters.test.js",
   ],
   "exclude": [
     "node_modules"
