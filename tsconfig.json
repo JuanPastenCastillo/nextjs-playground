@@ -35,7 +35,7 @@
     "utils/toBeTypeOf.test.js",
     "utils/returns.test.js",
     "utils/parameters.test.js",
-    "utils/parameters.test.js",
+    "utils/parameters.test.js", "components/navBar/__tests__/INDEX.test.js",
   ],
   "exclude": [
     "node_modules"

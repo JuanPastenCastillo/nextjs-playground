@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter as useNavigation } from "next/navigation"
 import { useRouter } from "next/router"
-import { Fragment, useMemo } from "react"
+import { useMemo } from "react"
 import { SlicedButton } from "../ui/buttons/Sliced"
 import { NavBarWrapper } from "./styles/NavBarWrapper"
 
@@ -11,15 +11,18 @@ export enum Routes {
   ORG = "ORG",
 }
 
-console.log("Routes:", Routes)
-
 export type Routes_Accepted = keyof typeof Routes
 
-export const NavBar = () => {
+type Props = {
+  justSomeText?: string
+}
+
+export const NavBar = ({ justSomeText = "default value" }: Props) => {
   let theNavigation = useNavigation()
 
   let handleMoveUserTo = (e: any, toWhere: string) => {
-    if (e.type === "click" || (e instanceof KeyboardEvent && e.key === "Enter")) theNavigation.push(`/${toWhere}`)
+    if (e.type === "click" || (e instanceof KeyboardEvent && e.key === "Enter"))
+      theNavigation.push(`/${toWhere}`)
   }
 
   let whichRoute = useRouter()
@@ -45,18 +48,18 @@ export const NavBar = () => {
         {Object.values(Routes).map((x, index) => {
           if (x === "/") {
             return (
-              <>
+              <li key={x}>
                 <Link href={x}>home</Link>
-              </>
+              </li>
             )
           }
 
           return (
-            <Fragment key={x}>
+            <li key={x}>
               <Link href={x}>
                 <SlicedButton isActive={actualRoute === x}>{x}</SlicedButton>
               </Link>
-            </Fragment>
+            </li>
           )
         })}
 
@@ -76,6 +79,8 @@ export const NavBar = () => {
           </span>
         </li> */}
       </ul>
+
+      <p>{justSomeText}</p>
     </NavBarWrapper>
   )
 }
