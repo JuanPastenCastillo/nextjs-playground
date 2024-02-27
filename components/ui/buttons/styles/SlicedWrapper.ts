@@ -5,7 +5,9 @@ type CalculateTransitionForTopBottom_Props = {
   transitionTopBottom: string
 }
 
-const calculateTransitionForTopBottom = (lineDelay: number = 1000): CalculateTransitionForTopBottom_Props => {
+const calculateTransitionForTopBottom = (
+  lineDelay: number = 1000,
+): CalculateTransitionForTopBottom_Props => {
   return {
     lineDelay: `${lineDelay}ms`,
     transitionTopBottom: `${(lineDelay * 0.035) / 100}s`,
@@ -13,8 +15,12 @@ const calculateTransitionForTopBottom = (lineDelay: number = 1000): CalculateTra
 }
 
 const transitionDelayBase = 800
-const transitionDelay = `${calculateTransitionForTopBottom(transitionDelayBase).lineDelay}`
-const transitionDelay_topBottom = `${calculateTransitionForTopBottom(transitionDelayBase).transitionTopBottom}`
+const transitionDelay = `${
+  calculateTransitionForTopBottom(transitionDelayBase).lineDelay
+}`
+const transitionDelay_topBottom = `${
+  calculateTransitionForTopBottom(transitionDelayBase).transitionTopBottom
+}`
 
 const sharedStyles = () => css`
   border-color: crimson;
@@ -45,7 +51,8 @@ export const Top = styled.div`
 
   top: 0;
 
-  transition: all ${transitionDelay_topBottom} cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
+  transition: all ${transitionDelay_topBottom}
+    cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
 
   transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
 
@@ -57,7 +64,8 @@ export const Bottom = styled.div`
   height: 24px;
   bottom: -6px;
 
-  transition: all ${transitionDelay_topBottom} cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
+  transition: all ${transitionDelay_topBottom}
+    cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
 
   transition-timing-function: cubic-bezier(1, -0.055, 0.025, 1.04); /* custom */
 
@@ -72,7 +80,7 @@ export const Bottom = styled.div`
 `
 
 type Styled_Props = {
-  isActive?: boolean
+  isactive?: boolean
 }
 
 export const SlicedWrapper = styled.button<Styled_Props>`
@@ -92,7 +100,12 @@ export const SlicedWrapper = styled.button<Styled_Props>`
 
   transition: all ${transitionDelay} cubic-bezier(0.89, -0.17, 0.14, 1.225); /* custom */
 
-  transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225); /* custom */
+  transition-timing-function: cubic-bezier(
+    0.89,
+    -0.17,
+    0.14,
+    1.225
+  ); /* custom */
 
   &:before {
     content: "";
@@ -104,8 +117,14 @@ export const SlicedWrapper = styled.button<Styled_Props>`
     top: 50%;
     right: -35px;
 
-    transition: all ${transitionDelay} cubic-bezier(0.89, -0.17, 0.14, 1.225); /* custom */
-    transition-timing-function: cubic-bezier(0.89, -0.17, 0.14, 1.225); /* custom */
+    transition: all ${transitionDelay} cubic-bezier(0.89, -0.17, 0.14, 1.225);
+
+    transition-timing-function: cubic-bezier(
+      0.89,
+      -0.17,
+      0.14,
+      1.225
+    ); /* custom */
   }
 
   &:hover,
@@ -113,8 +132,8 @@ export const SlicedWrapper = styled.button<Styled_Props>`
     ${sharedStyles()};
   }
 
-  ${({ isActive }) =>
-    isActive &&
+  ${({ isactive }) =>
+    isactive &&
     css`
       ${sharedStyles()}
     `}

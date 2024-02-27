@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { NavBar } from "./navBar/INDEX"
+import { INDEX_NavBar } from "./navBar/INDEX_NavBar"
 
 type Props = {
   children: ReactNode
@@ -8,7 +8,7 @@ type Props = {
 export const Layout = ({ children }: Props) => {
   return (
     <>
-      <NavBar />
+      <INDEX_NavBar />
 
       <main>{children}</main>
     </>

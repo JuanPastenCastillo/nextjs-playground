@@ -1,8 +1,14 @@
 import { Bottom, SlicedWrapper, Top } from "./styles/SlicedWrapper"
 
-export const SlicedButton = ({ children = "Sliced Button", isActive }: { children: string; isActive: boolean }) => {
+export const SlicedButton = ({
+  children = "Sliced Button",
+  isactive,
+}: {
+  children: string
+  isactive: boolean
+}) => {
   return (
-    <SlicedWrapper isActive={isActive}>
+    <SlicedWrapper isactive={isactive}>
       <Top>
         <span>{children}</span>
       </Top>

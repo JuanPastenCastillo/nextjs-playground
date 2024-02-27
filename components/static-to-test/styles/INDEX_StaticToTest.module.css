@@ -1,0 +1,8 @@
+.inputs {
+  content: "TESTING";
+  border: 2px solid green;
+
+  display: grid;
+
+  gap: 16px;
+}

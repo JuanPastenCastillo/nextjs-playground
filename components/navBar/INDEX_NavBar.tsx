@@ -17,7 +17,7 @@ type Props = {
   justSomeText?: string
 }
 
-export const NavBar = ({ justSomeText = "default value" }: Props) => {
+export const INDEX_NavBar = ({ justSomeText = "default value" }: Props) => {
   let theNavigation = useNavigation()
 
   let handleMoveUserTo = (e: any, toWhere: string) => {
@@ -42,8 +42,10 @@ export const NavBar = ({ justSomeText = "default value" }: Props) => {
     }
   }, [whichRoute.asPath, whichRoute.isReady])
 
+  console.log("actualRoute:", actualRoute)
+
   return (
-    <NavBarWrapper>
+    <NavBarWrapper isHome={actualRoute === "/"}>
       <ul>
         {Object.values(Routes).map((x, index) => {
           if (x === "/") {
@@ -57,27 +59,11 @@ export const NavBar = ({ justSomeText = "default value" }: Props) => {
           return (
             <li key={x}>
               <Link href={x}>
-                <SlicedButton isActive={actualRoute === x}>{x}</SlicedButton>
+                <SlicedButton isactive={actualRoute === x}>{x}</SlicedButton>
               </Link>
             </li>
           )
         })}
-
-        {/* <li>
-          <Link
-            href={Routes.HOME}
-            className={`${actualRoute === Routes.HOME && Classes_NavBar.HOME_ACTIVE}`}
-            tabIndex={0}>
-            home{" "}
-          </Link>
-        </li>
-        <li>
-          <span
-            onClick={(e) => handleMoveUserTo(e, Routes.CHALLENGES)}
-            onKeyDown={(e) => handleMoveUserTo(e, Routes.CHALLENGES)}>
-            <SlicedButton isActive={actualRoute === Routes.CHALLENGES}>Challenges</SlicedButton>
-          </span>
-        </li> */}
       </ul>
 
       <p>{justSomeText}</p>

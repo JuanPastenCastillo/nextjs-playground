@@ -5,10 +5,10 @@ import { defineConfig } from "vitest/config"
 export default defineConfig({
   plugins: [react()],
   test: {
-    globals: true,
     environment: "jsdom",
-    includeSource: ["**/*.{js,ts}"],
+    includeSource: ["**/*.{js,ts, jsx, tsx}"],
   },
+
   resolve: {
     alias: [
       {
