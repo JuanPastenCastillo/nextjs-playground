@@ -6,6 +6,12 @@ import { INDEX_StaticToTest } from "../INDEX_StaticToTest"
 describe("Static Test, only read", (ctx_describe) => {
   let getRender = render(<INDEX_StaticToTest />)
 
+  it("Snapshot: nothing should change", (ctx) => {
+    expect(getRender).toMatchFileSnapshot(
+      "./__snapshots__/INDEX_StaticToTest.html",
+    )
+  })
+
   it("Suggested role", (ctx) => {
     /* screen.getByRole("which one?") // This display all the roles suggested for all the HTML  */
   })

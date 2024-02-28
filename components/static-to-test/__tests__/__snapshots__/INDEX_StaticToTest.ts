@@ -1,0 +1,730 @@
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="sc-bdfCDU ZOXFR"
+      >
+        <article>
+          <header>
+            <h1>
+              This is a h1
+            </h1>
+          </header>
+        </article>
+        <header>
+          <h2>
+            This is a h2
+          </h2>
+        </header>
+        <header>
+          <h3>
+            This is a h3
+          </h3>
+        </header>
+        <header>
+          <h4>
+            This is a h4
+          </h4>
+        </header>
+        <header>
+          <h5>
+            This is a h5
+          </h5>
+        </header>
+        <header>
+          <h6>
+            This is a h6
+          </h6>
+        </header>
+        <nav>
+          <ul
+            data-testid="LI_options"
+          >
+            <li>
+              Li Element: 3
+            </li>
+            <li>
+              Li Element: 2
+            </li>
+            <li>
+              Li Element: 1
+            </li>
+          </ul>
+          <ul>
+            <li>
+              Li Element: 1
+            </li>
+            <li>
+              Li Element: 2
+            </li>
+          </ul>
+        </nav>
+        <nav>
+          <ol>
+            <li>
+              Li Element: A
+            </li>
+            <li>
+              Li Element: B
+            </li>
+            <li>
+              Li Element: C
+            </li>
+          </ol>
+        </nav>
+        <a
+          href="https://duckduckgo.com/"
+          referrerpolicy="no-referrer"
+          target="_blank"
+        >
+          Some link to duckduckgo with anchor tag element
+        </a>
+        <a
+          href="https://bing.com"
+          referrerpolicy="no-referrer"
+          target="_blank"
+        >
+          Some link to duckduckgo with NEXTJS 13 element
+        </a>
+        <img
+          alt="some image of a Pigeon, html tag"
+          height="9999"
+          src="public/norway.jpg"
+          width="9999"
+        />
+        <div>
+          <img
+            alt="some image of a Pigeon, nextjs component"
+            data-nimg="1"
+            decoding="async"
+            height="9999"
+            loading="lazy"
+            src="/_next/image?url=%2Fpublic%2Fpigeon.webp&w=3840&q=75"
+            srcset="/_next/image?url=%2Fpublic%2Fpigeon.webp&w=3840&q=75 1x"
+            style="color: transparent;"
+            width="9999"
+          />
+        </div>
+        <img
+          alt="some image of a Norwegian place"
+          data-nimg="1"
+          decoding="async"
+          height="9999"
+          loading="lazy"
+          src="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75 1x"
+          style="color: transparent;"
+          width="9999"
+        />
+        <img
+          alt="some image of a Norwegian place"
+          data-nimg="1"
+          data-testid="special image"
+          decoding="async"
+          height="9999"
+          loading="lazy"
+          src="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75 1x"
+          style="color: transparent;"
+          width="9999"
+        />
+        <img
+          alt="Norway flag"
+          data-nimg="1"
+          decoding="async"
+          height="9999"
+          loading="lazy"
+          src="/assets/Norway_SVG.svg"
+          style="color: transparent;"
+          width="9999"
+        />
+        <div>
+          <input
+            data-testid="input"
+            type="button"
+            value="like button in a HTML input tag"
+          />
+          <label
+            data-testid="first_label"
+          >
+            First checkbox
+            <input
+              data-testid="input"
+              type="checkbox"
+            />
+          </label>
+          <label
+            data-testid="second_label"
+          >
+            Second checkbox
+            <input
+              data-testid="input"
+              type="checkbox"
+            />
+          </label>
+          <label
+            data-testid="parent of color"
+          >
+            Parent of color
+            <input
+              aria-label="color_input_here"
+              data-testid="input"
+              name="head"
+              type="color"
+              value="#e66465"
+            />
+          </label>
+          <label
+            data-testid="date_input"
+            for="date_here"
+          >
+            DATE HERE
+          </label>
+          <input
+            aria-label="date_input_here"
+            data-testid="date_input"
+            id="date_here"
+            type="date"
+          />
+          <input
+            data-testid="input"
+            type="datetime-local"
+          />
+          <input
+            aria-label="email_input"
+            data-testid="input"
+            type="email"
+          />
+          <input
+            data-testid="input"
+            type="file"
+          />
+          <input
+            data-testid="input"
+            type="hidden"
+          />
+          <input
+            data-testid="input"
+            type="image"
+          />
+          <input
+            data-testid="input"
+            type="month"
+          />
+          <input
+            data-testid="input"
+            type="number"
+          />
+          <input
+            data-testid="input"
+            type="password"
+          />
+          <input
+            data-testid="input"
+            type="radio"
+          />
+          <input
+            data-testid="input"
+            type="range"
+          />
+          <input
+            data-testid="input"
+            type="reset"
+          />
+          <input
+            data-testid="input"
+            type="search"
+          />
+          <input
+            data-testid="input"
+            type="submit"
+          />
+          <input
+            data-testid="input"
+            type="tel"
+          />
+          <input
+            data-testid="input"
+            type="time"
+          />
+          <input
+            data-testid="input"
+            type="url"
+          />
+          <input
+            data-testid="input"
+            type="week"
+          />
+          <input
+            data-testid="input"
+            type="text"
+          />
+          <input
+            data-testid="input"
+            type="email"
+          />
+          <textarea />
+        </div>
+        <aside
+          data-testid="specific aside"
+        >
+          Some Random text, Aside
+        </aside>
+        <aside>
+          Second aside
+        </aside>
+        <form>
+          <label>
+            This is the label
+            <input
+              aria-label="input checkbox inside form at the side of input"
+              data-testid="input"
+              type="checkbox"
+            />
+          </label>
+        </form>
+        <details
+          data-testid="detail"
+        >
+          <summary
+            data-testid="summary"
+          >
+            Some details here, this is the sumary
+          </summary>
+          This is displayed on open without any on it
+        </details>
+        <div
+          class="dialog"
+        >
+          <button>
+            Open Dialog 🟩
+          </button>
+          <dialog>
+            <p>
+              This is the content of the dialog.
+            </p>
+            <button>
+              Close🟥
+            </button>
+          </dialog>
+        </div>
+        <footer
+          aria-label="footer without article as father - aria"
+          data-testid="footer without article as father"
+        >
+          <p>
+            Some footer text here
+          </p>
+          <p>
+            Text of paragraph 
+            <span>
+              and a text inside the P HTML TAG
+            </span>
+          </p>
+        </footer>
+        <article>
+          <footer>
+            <p>
+              Some footer text here
+            </p>
+            <p>
+              Text of paragraph 
+              <span>
+                and a text inside the P HTML TAG
+              </span>
+            </p>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sc-bdfCDU ZOXFR"
+    >
+      <article>
+        <header>
+          <h1>
+            This is a h1
+          </h1>
+        </header>
+      </article>
+      <header>
+        <h2>
+          This is a h2
+        </h2>
+      </header>
+      <header>
+        <h3>
+          This is a h3
+        </h3>
+      </header>
+      <header>
+        <h4>
+          This is a h4
+        </h4>
+      </header>
+      <header>
+        <h5>
+          This is a h5
+        </h5>
+      </header>
+      <header>
+        <h6>
+          This is a h6
+        </h6>
+      </header>
+      <nav>
+        <ul
+          data-testid="LI_options"
+        >
+          <li>
+            Li Element: 3
+          </li>
+          <li>
+            Li Element: 2
+          </li>
+          <li>
+            Li Element: 1
+          </li>
+        </ul>
+        <ul>
+          <li>
+            Li Element: 1
+          </li>
+          <li>
+            Li Element: 2
+          </li>
+        </ul>
+      </nav>
+      <nav>
+        <ol>
+          <li>
+            Li Element: A
+          </li>
+          <li>
+            Li Element: B
+          </li>
+          <li>
+            Li Element: C
+          </li>
+        </ol>
+      </nav>
+      <a
+        href="https://duckduckgo.com/"
+        referrerpolicy="no-referrer"
+        target="_blank"
+      >
+        Some link to duckduckgo with anchor tag element
+      </a>
+      <a
+        href="https://bing.com"
+        referrerpolicy="no-referrer"
+        target="_blank"
+      >
+        Some link to duckduckgo with NEXTJS 13 element
+      </a>
+      <img
+        alt="some image of a Pigeon, html tag"
+        height="9999"
+        src="public/norway.jpg"
+        width="9999"
+      />
+      <div>
+        <img
+          alt="some image of a Pigeon, nextjs component"
+          data-nimg="1"
+          decoding="async"
+          height="9999"
+          loading="lazy"
+          src="/_next/image?url=%2Fpublic%2Fpigeon.webp&w=3840&q=75"
+          srcset="/_next/image?url=%2Fpublic%2Fpigeon.webp&w=3840&q=75 1x"
+          style="color: transparent;"
+          width="9999"
+        />
+      </div>
+      <img
+        alt="some image of a Norwegian place"
+        data-nimg="1"
+        decoding="async"
+        height="9999"
+        loading="lazy"
+        src="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75"
+        srcset="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75 1x"
+        style="color: transparent;"
+        width="9999"
+      />
+      <img
+        alt="some image of a Norwegian place"
+        data-nimg="1"
+        data-testid="special image"
+        decoding="async"
+        height="9999"
+        loading="lazy"
+        src="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75"
+        srcset="/_next/image?url=%2Fpublic%2Fnorway.jpg&w=3840&q=75 1x"
+        style="color: transparent;"
+        width="9999"
+      />
+      <img
+        alt="Norway flag"
+        data-nimg="1"
+        decoding="async"
+        height="9999"
+        loading="lazy"
+        src="/assets/Norway_SVG.svg"
+        style="color: transparent;"
+        width="9999"
+      />
+      <div>
+        <input
+          data-testid="input"
+          type="button"
+          value="like button in a HTML input tag"
+        />
+        <label
+          data-testid="first_label"
+        >
+          First checkbox
+          <input
+            data-testid="input"
+            type="checkbox"
+          />
+        </label>
+        <label
+          data-testid="second_label"
+        >
+          Second checkbox
+          <input
+            data-testid="input"
+            type="checkbox"
+          />
+        </label>
+        <label
+          data-testid="parent of color"
+        >
+          Parent of color
+          <input
+            aria-label="color_input_here"
+            data-testid="input"
+            name="head"
+            type="color"
+            value="#e66465"
+          />
+        </label>
+        <label
+          data-testid="date_input"
+          for="date_here"
+        >
+          DATE HERE
+        </label>
+        <input
+          aria-label="date_input_here"
+          data-testid="date_input"
+          id="date_here"
+          type="date"
+        />
+        <input
+          data-testid="input"
+          type="datetime-local"
+        />
+        <input
+          aria-label="email_input"
+          data-testid="input"
+          type="email"
+        />
+        <input
+          data-testid="input"
+          type="file"
+        />
+        <input
+          data-testid="input"
+          type="hidden"
+        />
+        <input
+          data-testid="input"
+          type="image"
+        />
+        <input
+          data-testid="input"
+          type="month"
+        />
+        <input
+          data-testid="input"
+          type="number"
+        />
+        <input
+          data-testid="input"
+          type="password"
+        />
+        <input
+          data-testid="input"
+          type="radio"
+        />
+        <input
+          data-testid="input"
+          type="range"
+        />
+        <input
+          data-testid="input"
+          type="reset"
+        />
+        <input
+          data-testid="input"
+          type="search"
+        />
+        <input
+          data-testid="input"
+          type="submit"
+        />
+        <input
+          data-testid="input"
+          type="tel"
+        />
+        <input
+          data-testid="input"
+          type="time"
+        />
+        <input
+          data-testid="input"
+          type="url"
+        />
+        <input
+          data-testid="input"
+          type="week"
+        />
+        <input
+          data-testid="input"
+          type="text"
+        />
+        <input
+          data-testid="input"
+          type="email"
+        />
+        <textarea />
+      </div>
+      <aside
+        data-testid="specific aside"
+      >
+        Some Random text, Aside
+      </aside>
+      <aside>
+        Second aside
+      </aside>
+      <form>
+        <label>
+          This is the label
+          <input
+            aria-label="input checkbox inside form at the side of input"
+            data-testid="input"
+            type="checkbox"
+          />
+        </label>
+      </form>
+      <details
+        data-testid="detail"
+      >
+        <summary
+          data-testid="summary"
+        >
+          Some details here, this is the sumary
+        </summary>
+        This is displayed on open without any on it
+      </details>
+      <div
+        class="dialog"
+      >
+        <button>
+          Open Dialog 🟩
+        </button>
+        <dialog>
+          <p>
+            This is the content of the dialog.
+          </p>
+          <button>
+            Close🟥
+          </button>
+        </dialog>
+      </div>
+      <footer
+        aria-label="footer without article as father - aria"
+        data-testid="footer without article as father"
+      >
+        <p>
+          Some footer text here
+        </p>
+        <p>
+          Text of paragraph 
+          <span>
+            and a text inside the P HTML TAG
+          </span>
+        </p>
+      </footer>
+      <article>
+        <footer>
+          <p>
+            Some footer text here
+          </p>
+          <p>
+            Text of paragraph 
+            <span>
+              and a text inside the P HTML TAG
+            </span>
+          </p>
+        </footer>
+      </article>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
