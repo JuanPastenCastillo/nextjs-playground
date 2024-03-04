@@ -6,9 +6,6 @@ import Link from "next/link"
 import { DialogComponent } from "./DialogComponent"
 import { INDEX_StaticToTestWrapper } from "./styles/INDEX_StaticToTestWrapper"
 
-// console.log("Norway_Func, Norway_SVG:", Norway_Func, Norway_SVG)
-// console.log("Norway_SVG_2:", Norway_SVG_2)
-
 export const INDEX_StaticToTest = () => {
   return (
     <INDEX_StaticToTestWrapper>
@@ -59,7 +56,8 @@ export const INDEX_StaticToTest = () => {
       <a
         href="https://duckduckgo.com/"
         target="_blank"
-        referrerPolicy="no-referrer">
+        referrerPolicy="no-referrer"
+        rel="noreferrer">
         Some link to duckduckgo with anchor tag element
       </a>
 

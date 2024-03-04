@@ -1,0 +1,16 @@
+name: Dummy YML
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  say_hi:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Display some text like Hi
+        run: |
+          echo "First dummy YML, work?"
+      - run: detect-package-manager
+      - run: ls -l

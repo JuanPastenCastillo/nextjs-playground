@@ -42,8 +42,6 @@ export const INDEX_NavBar = ({ justSomeText = "default value" }: Props) => {
     }
   }, [whichRoute.asPath, whichRoute.isReady])
 
-  console.log("actualRoute:", actualRoute)
-
   return (
     <NavBarWrapper isHome={actualRoute === "/"}>
       <ul>
