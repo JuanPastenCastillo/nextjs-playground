@@ -1,0 +1,23 @@
+name: Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pipeline_jobs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: get last commit → DEV
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: set up node → DEV
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: run npm ci → DEV
+        run: npm ci
+      - name: run npm test → DEV
+        run: npm test
