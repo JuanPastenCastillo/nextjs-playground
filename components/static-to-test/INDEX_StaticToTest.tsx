@@ -259,6 +259,8 @@ export const INDEX_StaticToTest = () => {
 
       <DialogComponent />
 
+      <p>Some new paragraph, minor change</p>
+
       {/* <Norway_Func /> */}
 
       {/* If is NOT a descendant of `article`, `aside`, `main`, `nav` or `section` is `role=generic`  */}
