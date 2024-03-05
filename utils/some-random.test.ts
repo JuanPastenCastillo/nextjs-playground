@@ -1,5 +1,5 @@
 import { describe, it } from "vitest"
 
-describe.only("group of tests", () => {
+describe.todo("group of tests", () => {
   it.todo("Must be implemented")
 })
