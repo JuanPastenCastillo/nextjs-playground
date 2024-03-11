@@ -12,5 +12,6 @@ jobs:
       - name: Display some text like Hi
         run: |
           echo "First dummy YML, work?"
+          echo "Just for trigger new action"
       - run: date
       - run: ls -l
