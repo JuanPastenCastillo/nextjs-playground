@@ -1,5 +1,5 @@
 import { INDEX_D_ORG } from "@/components/ORG/pages/home/desktop/INDEX_D_ORG"
-import { useWidthSize } from "@/hooks/useWidthSize"
+import { useWidthSize } from "@/hooks/use-width_size"
 
 // const INDEX_D_ORG_Component = dynamic(() => import("../../components/ORG/pages/home/desktop/INDEX_D_ORG").then((mod) => mod.INDEX_D_ORG), { ssr: false })
 

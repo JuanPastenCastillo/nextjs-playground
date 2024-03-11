@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { size } from "../utils/ScreenSizes"
+import { size } from "../utils/screen_sizes"
 
 export const useWidthSize = () => {
   const [isMobile, setIsMobile] = useState(true)

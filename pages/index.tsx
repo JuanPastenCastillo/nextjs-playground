@@ -6,7 +6,6 @@ const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
   let getSize = useMediaQuery({})
-  console.log("getSize:", getSize)
 
   return (
     <>
