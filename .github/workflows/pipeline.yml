@@ -25,5 +25,5 @@ jobs:
           node-version: 20
       - name: run npm ci → DEV
         run: npm ci
-      - name: run npm test → DEV_
+      - name: run npm test → DEV_2
         run: npm test
