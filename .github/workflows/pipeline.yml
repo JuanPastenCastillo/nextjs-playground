@@ -26,19 +26,20 @@ jobs:
           cache: "npm"
       - name: run npm ci → DEV_NPM_CACHE
         run: npm ci
-      - uses: actions/upload-artifact@v4
-        with:
-          name: npm_cache
-          path: npm_cache/
 
   build:
     needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/download-artifact@v4
+      - name: get last commit → DEV_NPM_CACHE
+        uses: actions/checkout@v4
         with:
-          name: npm_cache
-          path: npm_cache
+          fetch-depth: 0
+      - name: set up node → DEV_NPM_CACHE
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
       - name: build
         run: npm run build
 
@@ -46,9 +47,14 @@ jobs:
     needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/download-artifact@v4
+      - name: get last commit → DEV_NPM_CACHE
+        uses: actions/checkout@v4
         with:
-          name: npm_cache
-          path: npm_cache
+          fetch-depth: 0
+      - name: set up node → DEV_NPM_CACHE
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
       - name: run npm test → DEV_999
         run: npm test
