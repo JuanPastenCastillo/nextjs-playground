@@ -15,34 +15,28 @@ jobs:
   npm_cache:
     runs-on: ubuntu-22.04
     steps:
-      - name: get last commit → DEV_NPM_CACHE
+      - name: get last commit
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: set up node → DEV_NPM_CACHE
+      - name: set up node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
-      - name: run npm ci → DEV_NPM_CACHE_
+          cache-dependency-path: subdir/package-lock.json
+      - name: run npm ci
         run: npm ci
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
 
   build:
     needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
-      - name: get last commit → DEV_NPM_CACHE
+      - name: get last commit → BUILD
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: set up node → DEV_NPM_CACHE
+      - name: set up node → BUILD
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -54,11 +48,11 @@ jobs:
     needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
-      - name: get last commit → DEV_NPM_CACHE
+      - name: get last commit → TEST
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: set up node → DEV_NPM_CACHE
+      - name: set up node → TEST
         uses: actions/setup-node@v4
         with:
           node-version: 20
