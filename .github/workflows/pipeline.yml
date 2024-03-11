@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   build:
-    needs: [npm_cache]
+    # needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
       - name: get last commit → BUILD
@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
   test:
-    needs: [npm_cache]
+    # needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
       - name: get last commit → TEST
