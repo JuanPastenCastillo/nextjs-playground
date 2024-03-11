@@ -27,10 +27,10 @@ jobs:
         run: npm ci
       - name: build
         run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: nextjs-build
-          path: .next/
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: nextjs-build
+      #     path: .next/
 
   test:
     runs-on: ubuntu-22.04
@@ -45,9 +45,9 @@ jobs:
           node-version: 20
       - name: run npm ci → DEV_TEST
         run: npm ci
-      - uses: actions/download-artifact@v4
-        with:
-          name: nextjs-build
-          path: .next/
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: nextjs-build
+      #     path: .next/
       - name: run npm test → DEV_999
         run: npm test
