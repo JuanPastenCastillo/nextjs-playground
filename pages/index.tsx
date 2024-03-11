@@ -12,6 +12,7 @@ export default function Home() {
       {/* <Calculator />
 
       <INDEX_HOME /> */}
+      <h1>Changes!</h1>
       <INDEX_HOME />
 
       {/* <KeyboardComponent /> */}
