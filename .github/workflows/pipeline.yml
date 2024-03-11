@@ -27,7 +27,7 @@ jobs:
       - uses: actions/cache@v4
         id: cache
         with:
-          path: **/node_modules
+          path: "~/.npm"
           key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
       - name: run npm ci
         run: npm install
