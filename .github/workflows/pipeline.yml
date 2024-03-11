@@ -26,6 +26,13 @@ jobs:
           cache: "npm"
       - name: run npm ci → DEV_NPM_CACHE_
         run: npm ci
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
   build:
     needs: [npm_cache]
