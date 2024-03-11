@@ -260,6 +260,7 @@ export const INDEX_StaticToTest = () => {
       <DialogComponent />
 
       <p>Some new paragraph, minor change</p>
+      <p>Some new paragraph, minor change</p>
 
       {/* <Norway_Func /> */}
 
