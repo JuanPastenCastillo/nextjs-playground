@@ -7,13 +7,11 @@ on:
     branches: [main, master]
     types: [opened, synchronize]
 
-jobs:
-  avoid_redundancy:
-    runs-on: ubuntu-22.04
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
+jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
@@ -35,18 +33,18 @@ jobs:
           path: dist
 
   test:
-    needs: [build, avoid_redundancy]
+    needs: [build]
     runs-on: ubuntu-22.04
     steps:
-      - name: get last commit → DEV
+      - name: get last commit → DEV_TEST
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: set up node → DEV
+      - name: set up node → DEV_TEST
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: run npm ci → DEV
+      - name: run npm ci → DEV_TEST
         run: npm ci
       - uses: actions/download-artifact@v4
         with:
