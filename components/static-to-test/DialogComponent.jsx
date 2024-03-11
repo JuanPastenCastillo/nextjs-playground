@@ -7,8 +7,19 @@ export const DialogComponent = () => {
     dialogRef.current.showModal()
   }
 
-  const closeDialog = () => {
-    dialogRef.current.close()
+  const closeDialog = ({ event }) => {
+    if (
+      event.type === "mousedown" ||
+      event.type === "click" ||
+      (event.code === "Enter" &&
+        event.key === "Enter" &&
+        event.type === "keydown") ||
+      event.code === "Escape"
+    ) {
+      console.log("💚e:", event)
+
+      dialogRef.current.close()
+    }
   }
 
   return (
