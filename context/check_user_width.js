@@ -1,5 +1,5 @@
-import { useWidthSize } from "@/hooks/useWidthSize"
 import { createContext, useContext } from "react"
+import { useWidthSize } from "../hooks/use-width_size"
 
 const CheckUserWidth = createContext(null)
 
