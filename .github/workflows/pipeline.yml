@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: run npm ci → DEV_BUILD_2
+      - name: run npm ci → DEV_BUILD
         run: npm ci
       - name: build
         run: npm run build
@@ -33,6 +33,7 @@ jobs:
       #     path: .next/
 
   test:
+    # needs: [build]
     runs-on: ubuntu-22.04
     steps:
       - name: get last commit → DEV_TEST
