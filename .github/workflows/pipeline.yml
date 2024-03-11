@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   build:
-    # needs: [linter]
+    needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
       - name: get last commit → BUILD
@@ -25,11 +25,13 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+      - name: run npm ci
+        run: npm ci
       - name: build
         run: npm run build
 
   test:
-    # needs: [npm_cache]
+    needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
       - name: get last commit → TEST
@@ -41,5 +43,7 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+      - name: run npm ci
+        run: npm ci
       - name: run npm test → DEV_999
         run: npm test
