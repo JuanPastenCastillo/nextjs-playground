@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: run npm ci → DEV_BUILD
+      - name: run npm ci → DEV_BUILD_2
         run: npm ci
       - name: build
         run: npm run build
