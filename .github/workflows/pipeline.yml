@@ -11,6 +11,10 @@ jobs:
   pipeline_jobs:
     runs-on: ubuntu-22.04
     steps:
+      - name: Cancel previous Redudant Builds
+        uses: styfle/cancel-workflow-action
+        with:
+          access_token: ${{ github.token }}
       - name: get last commit → DEV
         uses: actions/checkout@v4
         with:
