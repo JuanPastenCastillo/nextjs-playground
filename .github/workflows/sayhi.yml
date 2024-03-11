@@ -3,9 +3,9 @@ name: Say_Hi!
 on:
   push:
     branches: [main, master]
-  pull_request:
-    branches: [main, master]
-    types: [opened, synchronize]
+  # pull_request:
+  #   branches: [main, master]
+  #   types: [opened, synchronize]
 
 jobs:
   say_hi:
