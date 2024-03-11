@@ -29,8 +29,8 @@ jobs:
         run: npm run build
       - uses: actions/upload-artifact@v4
         with:
-          name: dist
-          path: dist
+          name: nextjs-build
+          path: .next/
 
   test:
     needs: [build]
@@ -48,7 +48,7 @@ jobs:
         run: npm ci
       - uses: actions/download-artifact@v4
         with:
-          name: dist
-          path: dist
+          name: nextjs-build
+          path: .next/
       - name: run npm test → DEV_999
         run: npm test
