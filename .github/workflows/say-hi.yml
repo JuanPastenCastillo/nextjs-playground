@@ -14,5 +14,6 @@ jobs:
           echo "First dummy YML, work?"
           echo "Just for trigger new action"
           echo "Work?"
+          echo "yes?"
       - run: date
       - run: ls -l
