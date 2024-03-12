@@ -1,4 +1,4 @@
-name: Pipeline
+name: "Making build"
 
 on:
   push:
@@ -29,21 +29,3 @@ jobs:
         run: npm ci
       - name: build
         run: npm run build
-
-  test:
-    # needs: [npm_cache]
-    runs-on: ubuntu-22.04
-    steps:
-      - name: get last commit → TEST
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: set up node → TEST
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-      - name: run npm ci
-        run: npm ci
-      - name: run npm test → DEV_999
-        run: npm test

@@ -11,7 +11,10 @@
     "testj": "jest",
     "coverage": "vitest run --coverage",
     "e2e": "playwright test",
-    "e2eui": "playwright test --ui"
+    "e2eui": "playwright test --ui",
+    "e2eh": "playwright test --headed",
+    "e2er": "playwright show-report",
+    "e2ed": "playwright test --debug"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

@@ -1,0 +1,31 @@
+name: "Tests: vitest and react-testing-library"
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    types: [opened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  test:
+    # needs: [npm_cache]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: get last commit → TEST
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: set up node → TEST
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: run npm ci
+        run: npm ci
+      - name: run npm test → DEV_999
+        run: npm test
