@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   test:
+    name: "Testing: vitest and react testing library"
     # needs: [npm_cache]
     runs-on: ubuntu-22.04
     steps:
