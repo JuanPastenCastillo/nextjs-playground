@@ -13,7 +13,6 @@ concurrency:
 
 jobs:
   test:
-    if: github.event.deployment_status.state == 'STOP!!!dasda' # Delete this line to make it work again
     name: "Testing: vitest and react testing library"
     # needs: [npm_cache]
     runs-on: ubuntu-22.04
