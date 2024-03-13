@@ -1,7 +1,7 @@
 import { INDEX_StaticToTest } from "../static-to-test/INDEX_StaticToTest"
 import { INDEX_HOMEWrapper } from "./styles/INDEX_HOMEWrapper"
 
-export const INDEX_HOME = () => {
+export const Index_Home = () => {
   // let getSize = useResizeWindow({})
 
   return (

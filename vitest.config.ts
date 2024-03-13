@@ -7,6 +7,14 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     includeSource: ["**/*.{js,ts, jsx, tsx}"],
+    exclude: [
+      "**/*.spec.ts",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/cypress/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*",
+    ],
   },
 
   resolve: {
