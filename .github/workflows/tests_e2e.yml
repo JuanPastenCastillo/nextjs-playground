@@ -12,9 +12,10 @@ concurrency:
 
 jobs:
   test:
-    name: "Testing: Playwright"
-    timeout-minutes: 60
+    name: "Testing: Playwright on ${{github.event.deployment_status.environment}}"
+    timeout-minutes: 5
     runs-on: ubuntu-22.04
+    if: github.event.deployment_status.state == 'success' && contains(github.event.deployment_status.environment, 'Production')
     steps:
       - name: Waiting for 200 from the Vercel Preview
         uses: patrickedqvist/wait-for-vercel-preview@v1.2.0 # https://github.com/patrickedqvist/wait-for-vercel-preview
@@ -38,7 +39,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          BASE_URL: ${{ steps.waitForDeploy.outputs.url }}
+          BASE_URL: ${{ github.event.deployment_status.target_url }}
 
       - uses: actions/upload-artifact@v4
         if: always()
