@@ -24,7 +24,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 300
       - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
-      - run: 4° ${{ github.event.deployment_status.environment_url }}
+      - run: echo ${{ github.event.deployment_status.environment_url }}
 
   tests:
     needs: tests_setup
@@ -32,10 +32,10 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     steps:
-      - run: 1° ${{ needs.test_setup.steps.waitForVercelPreviewDeployment.outputs.url }}
-      - run: 2° ${{steps.waitForVercelPreviewDeployment.outputs.url}}
-      - run: 3° ${{ needs.test_setup.outputs.url }}
-      - run: 4° ${{ github.event.deployment_status.environment_url }}
+      - run: echo ${{ needs.test_setup.steps.waitForVercelPreviewDeployment.outputs.url }}
+      - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
+      - run: echo ${{ needs.test_setup.outputs.url }}
+      - run: echo ${{ github.event.deployment_status.environment_url }}
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
