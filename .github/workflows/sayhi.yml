@@ -9,6 +9,7 @@ on:
 
 jobs:
   say_hi:
+    if: github.event.deployment_status.state == 'STOP!!!dasda' # Delete this line to make it work again
     runs-on: ubuntu-22.04
     steps:
       - name: Display some text like Hi

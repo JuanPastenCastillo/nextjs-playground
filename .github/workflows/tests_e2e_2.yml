@@ -11,18 +11,18 @@ concurrency:
 
 jobs:
   tests_setup:
-    if: github.event.deployment_status.state == 'STOP!!!dasda' # Delete this line to make it work again
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     name: Testing playwright on preview Vercel
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     steps:
-      - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1 # https://github.com/patrickedqvist/wait-for-vercel-preview
-        id: waitForVercelPreviewDeployment
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
-      - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
+      # - name: Wait for Vercel preview deployment to be ready
+      #   uses: patrickedqvist/wait-for-vercel-preview@v1.3.1 # https://github.com/patrickedqvist/wait-for-vercel-preview
+      #   id: waitForVercelPreviewDeployment
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     max_timeout: 300
+      # - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
 
       - uses: actions/checkout@v4
 
@@ -36,10 +36,11 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - run: echo ${{ github.event.deployment_status.environment_url }}
       - name: Run Playwright tests
-        run: npx playwright test
         env:
-          BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
+        run: npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: always()
