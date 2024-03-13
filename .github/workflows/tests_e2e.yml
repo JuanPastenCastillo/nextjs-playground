@@ -12,7 +12,7 @@ concurrency:
 jobs:
   tests_setup:
     name: Testing playwright on preview Vercel
-    timeout-minutes: 5
+    timeout-minutes: 3
     runs-on: ubuntu-22.04
     steps:
       - name: Wait for Vercel preview deployment to be ready
