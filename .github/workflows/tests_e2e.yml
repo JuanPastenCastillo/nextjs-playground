@@ -14,8 +14,6 @@ jobs:
     name: Test setup
     timeout-minutes: 5
     runs-on: ubuntu-22.04
-    outputs:
-      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
       - name: Wait for Vercel preview deployment to be ready
         uses: patrickedqvist/wait-for-vercel-preview@v1.3.1 # https://github.com/patrickedqvist/wait-for-vercel-preview
@@ -24,7 +22,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 300
       - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
-      - run: echo ${{ github.event.deployment_status.environment_url }}
 
       - uses: actions/checkout@v4
 
