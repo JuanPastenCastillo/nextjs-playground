@@ -87,10 +87,12 @@ export default defineConfig({
   //   url: "http://localhost:3000",
   //   reuseExistingServer: !process.env.CI,
   // },
-  webServer: {
-    command: `npm dev`,
-    url: BASE_URL,
-    timeout: 120 * 1000,
-    reuseExistingServer: true,
-  },
+  webServer: process.env.CI
+    ? undefined
+    : {
+        command: `npm dev`,
+        url: BASE_URL,
+        timeout: 120 * 1000,
+        reuseExistingServer: true,
+      },
 })
