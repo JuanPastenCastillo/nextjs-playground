@@ -31,6 +31,10 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     steps:
+      - run: echo 1° ${{ needs.test_setup.steps.waitForVercelPreviewDeployment.outputs.url }}
+      - run: echo 2° ${{steps.waitForVercelPreviewDeployment.outputs.url}}
+      - run: echo 3° ${{ needs.test_setup.outputs.url }}
+      - run: echo 4° ${{ github.event.deployment_status.environment_url }}
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -46,7 +50,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          BASE_URL: ${{ needs.test_setup.outputs.url }}
+          BASE_URL: ${{ needs.test_setup.steps.waitForVercelPreviewDeployment.outputs.url }}
 
       - uses: actions/upload-artifact@v4
         if: always()
