@@ -1,10 +1,6 @@
 name: "Tests: Playwright"
 on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
-    types: [opened, synchronize]
+  deployment_status:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
