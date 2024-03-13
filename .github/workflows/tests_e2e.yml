@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-22.04
     if: github.event.deployment_status.state == 'success' && contains(github.event.deployment_status.environment, 'Production')
     steps:
-      - name: Waiting for 200 from the Vercel Preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0 # https://github.com/patrickedqvist/wait-for-vercel-preview
-        id: waitForDeploy
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
+      # - name: Waiting for 200 from the Vercel Preview
+      #   uses: patrickedqvist/wait-for-vercel-preview@v1.2.0 # https://github.com/patrickedqvist/wait-for-vercel-preview
+      #   id: waitForDeploy
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     max_timeout: 300
 
       - uses: actions/checkout@v4
 
