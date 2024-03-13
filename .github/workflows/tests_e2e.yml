@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test:
-    name: "Testing: Playwright on ${{github.event.deployment_status.environment}}"
+    name: Testing on Playwright on ${{github.event.deployment_status.environment}}
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     if: github.event.deployment_status.state == 'success' && contains(github.event.deployment_status.environment, 'Production')
