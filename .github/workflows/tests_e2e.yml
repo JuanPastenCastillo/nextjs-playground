@@ -11,18 +11,10 @@ concurrency:
 
 jobs:
   tests_setup:
-    name: Testing playwright on preview Vercel
+    name: Buidl and after that playwright on preview Vercel
     timeout-minutes: 3
     runs-on: ubuntu-22.04
     steps:
-      - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1 # https://github.com/patrickedqvist/wait-for-vercel-preview
-        id: waitForVercelPreviewDeployment
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
-      - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -31,6 +23,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: build
+        run: npm run build
+
+      - name: Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1 # https://github.com/patrickedqvist/wait-for-vercel-preview
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 180
+      - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
