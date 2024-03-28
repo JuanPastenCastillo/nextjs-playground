@@ -1,4 +1,4 @@
-name: "Test Vitest plus React-Testing-Library"
+name: "Typescript checks"
 
 on:
   push:
@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [main, master]
     types: [opened, synchronize]
-  workflow_run:
-    workflows: ["Typescript checks"]
-    types:
-      - completed
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,7 +13,7 @@ concurrency:
 
 jobs:
   test:
-    name: "Testing: vitest and react testing library"
+    name: "Making Typescript Checks"
     runs-on: ubuntu-22.04
     steps:
       - name: get last commit
@@ -31,5 +27,5 @@ jobs:
           cache: "npm"
       - name: run npm ci
         run: npm ci
-      - name: run npm test → DEV_999
-        run: npm test
+      - name: run typescript checks
+        run: npx tsc -p tsconfig.json --noEmit

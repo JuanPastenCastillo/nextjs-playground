@@ -56,7 +56,9 @@ export const INDEX_NavBar = ({ justSomeText = "default value" }: Props) => {
 
           return (
             <li key={x}>
-              <Link href={x}>
+              <Link
+                href={x}
+                tabIndex={-1}>
                 <SlicedButton isactive={actualRoute === x}>{x}</SlicedButton>
               </Link>
             </li>
