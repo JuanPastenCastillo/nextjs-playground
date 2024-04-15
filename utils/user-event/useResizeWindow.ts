@@ -25,7 +25,7 @@ export const useMediaQuery = ({
 }
 
 /* 
-!FH0
+!FH
 Use the actual way to check mobile or desktop of Inclusive and test it
 
  */

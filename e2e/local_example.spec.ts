@@ -17,5 +17,5 @@ test("«Change!» text is defined", async ({ page, browser, browserName }) => {
     level: 1,
   })
 
-  await expect(getTitle).toBeDefined()
+  expect(getTitle).toBeDefined()
 })

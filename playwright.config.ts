@@ -16,9 +16,6 @@ dotenv.config({ path: ".env.local" })
 const PORT = process.env.PORT || 3000
 const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`
 export default defineConfig({
-  /*
-  testDir: "./e2e",
-  */
   /* Run tests in files in parallel */
   fullyParallel: true,
 
@@ -47,6 +44,8 @@ export default defineConfig({
     /* This is the default actually. See for more details: https://playwright.dev/docs/test-configuration#expect-options */
     timeout: 5000,
   },
+
+  // snapshotPathTemplate: "{testFileDir}",
 
   /* In Continuous Integration globalTimeout is 15 minutes, in local is 30 minutes. See more detials: https://playwright.dev/docs/test-timeouts#global-timeout */
   globalTimeout: process.env.CI ? 15 * 60 * 1000 : 15 * 60 * 1000,

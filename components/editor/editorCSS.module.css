@@ -1,0 +1,56 @@
+.bold {
+  font-weight: 800 !important;
+}
+
+.italic {
+  font-style: italic !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.h1 {
+  font-size: 46px !important;
+}
+
+.to16px {
+  font-size: 16px !important;
+}
+
+.to24px {
+  font-size: 24px !important;
+}
+
+.to64px {
+  font-size: 64px !important;
+}
+
+.accent2 {
+  font-size: 16px;
+}
+
+.link {
+  color: cornflowerblue !important;
+  cursor: pointer !important;
+  text-decoration: none;
+}
+
+.accent16px {
+  font-size: 16px;
+}
+
+.accent24px {
+  font-size: 24px;
+}
+
+.default {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.editor {
+  border: 1px solid cornflowerblue;
+  padding: 16px;
+}

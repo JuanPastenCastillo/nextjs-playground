@@ -73,6 +73,7 @@
             </li>
           </ol>
         </nav>
+        "
         <a
           href="https://duckduckgo.com/"
           referrerpolicy="no-referrer"
@@ -297,11 +298,16 @@
         </details>
         <div
           class="dialog"
+          data-testid="dialog-component"
         >
-          <button>
+          <button
+            data-testid="dialog-open"
+          >
             Open Dialog 🟩
           </button>
-          <dialog>
+          <dialog
+            data-testid="dialog-content"
+          >
             <p>
               This is the content of the dialog.
             </p>
@@ -418,6 +424,7 @@
           </li>
         </ol>
       </nav>
+      "
       <a
         href="https://duckduckgo.com/"
         referrerpolicy="no-referrer"
@@ -642,11 +649,16 @@
       </details>
       <div
         class="dialog"
+        data-testid="dialog-component"
       >
-        <button>
+        <button
+          data-testid="dialog-open"
+        >
           Open Dialog 🟩
         </button>
-        <dialog>
+        <dialog
+          data-testid="dialog-content"
+        >
           <p>
             This is the content of the dialog.
           </p>

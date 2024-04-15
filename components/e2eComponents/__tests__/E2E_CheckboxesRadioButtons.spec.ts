@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test"
 
 test.describe(`Testing Checkboxes and Radio Buttons`, () => {
   test("Checkbox", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
 
     let theCheckbox_1 = page.getByLabel("Checkbox button", { exact: true })
     await theCheckbox_1.check()
@@ -32,8 +32,9 @@ test.describe(`Testing Checkboxes and Radio Buttons`, () => {
     await theCheckbox_2.uncheck()
     await expect(theCheckbox_2).not.toBeChecked()
   })
+
   test("Radio", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
 
     let labelRadioButton_1 = page.getByLabel("Radio button 1")
     let labelRadioButton_2 = page.getByLabel("Radio button 2")

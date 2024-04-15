@@ -7,11 +7,14 @@ const TODO_ITEMS = [
   "book a doctors appointment",
 ]
 
+const textToSelect = "Hello, world!"
+const textSelector = `text=${textToSelect}`
+
 test.describe("Testing Fill with Inputs", () => {
   test("Text", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
 
-    const getInput = await page.getByLabel("text")
+    const getInput = page.getByLabel("text")
 
     await expect(getInput).toBeDefined()
 
@@ -29,7 +32,7 @@ test.describe("Testing Fill with Inputs", () => {
   })
 
   test("Date", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
 
     const getInputDate = await page.getByLabel("date", { exact: true })
     await expect(getInputDate).toHaveAttribute("type", "date")
@@ -41,7 +44,7 @@ test.describe("Testing Fill with Inputs", () => {
   })
 
   test("Local datetime", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
 
     const getInputDate = await page.getByLabel("datetime-local", {
       exact: true,
@@ -57,7 +60,7 @@ test.describe("Testing Fill with Inputs", () => {
   })
 
   test("Time", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
 
     const getInputDate = await page.getByLabel("time", {
       exact: true,
@@ -73,7 +76,7 @@ test.describe("Testing Fill with Inputs", () => {
   })
 
   test("Test content editable", async ({ page }) => {
-    await page.goto("http://localhost:3000/e2e")
+    await page.goto("/e2e")
     await page.getByLabel("content-editable").click()
     await expect(page.getByLabel("content-editable")).toBeVisible()
 

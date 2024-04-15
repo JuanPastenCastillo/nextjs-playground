@@ -186,9 +186,7 @@ describe("Static Test, only read", (ctx_describe) => {
     it("ammount of inputs are correct", (ctx_it) => {
       const inputElements = getRender.getAllByTestId("input")
       expect(inputElements.length).toBe(24)
-    })
 
-    it("input: button", (ctx) => {
       const getInputButton = getRender.getByDisplayValue(
         "like button in a HTML input tag",
       )

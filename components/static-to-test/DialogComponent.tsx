@@ -28,10 +28,18 @@ export const DialogComponent = () => {
   }
 
   return (
-    <div className="dialog">
-      <button onClick={openDialog}>Open Dialog 🟩</button>
+    <div
+      className="dialog"
+      data-testid="dialog-component">
+      <button
+        onClick={openDialog}
+        data-testid="dialog-open">
+        Open Dialog 🟩
+      </button>
 
-      <dialog ref={dialogRef}>
+      <dialog
+        ref={dialogRef}
+        data-testid="dialog-content">
         <p>This is the content of the dialog.</p>
         <button onClick={(e) => closeDialog({ event: e })}>Close🟥</button>
       </dialog>
