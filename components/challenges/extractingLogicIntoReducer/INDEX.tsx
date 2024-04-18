@@ -6,7 +6,7 @@ import { Challenge_4 } from "./4/Challenge_4"
 import { ExtractingLogicIntoReducerWrapper } from "./styles/ExtractingLogicIntoReducerWrapper"
 
 /**
- * Challenges comes from this page: https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges
+ * Challenges comes from this page: https://react.dev/learn/extracting-state-logic-into-a-reducer#challengess
 
 //!FH
 */

@@ -1,4 +1,4 @@
-name: "Tests: Playwright"
+name: "Tests Playwright"
 on:
   push:
     branches: [main, master]
@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   tests_setup:
-    name: Buidl and after that playwright on preview Vercel
+    name: Build and after that playwright on preview Vercel
     timeout-minutes: 3
     runs-on: ubuntu-22.04
     steps:

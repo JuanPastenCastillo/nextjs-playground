@@ -9,6 +9,7 @@ export default defineConfig({
     includeSource: ["**/*.{js,ts, jsx, tsx}"],
     exclude: [
       "**/*.spec.ts",
+      "**/*.spec.tsx",
       "**/node_modules/**",
       "**/dist/**",
       "**/cypress/**",

@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { DialogComponent } from "./DialogComponent"
 import { INDEX_StaticToTestWrapper } from "./styles/INDEX_StaticToTestWrapper"
+// import { css } from "@emotion/react"
 
 export const INDEX_StaticToTest = () => {
   return (
@@ -14,7 +15,6 @@ export const INDEX_StaticToTest = () => {
           <h1>This is a h1</h1>
         </header>
       </article>
-
       <header>
         <h2>This is a h2</h2>
       </header>
@@ -27,24 +27,20 @@ export const INDEX_StaticToTest = () => {
       <header>
         <h5>This is a h5</h5>
       </header>
-
       <header>
         <h6>This is a h6</h6>
       </header>
-
       <nav>
         <ul data-testid="LI_options">
           <li>Li Element: 3</li>
           <li>Li Element: 2</li>
           <li>Li Element: 1</li>
         </ul>
-
         <ul>
           <li>Li Element: 1</li>
           <li>Li Element: 2</li>
         </ul>
       </nav>
-
       <nav>
         <ol>
           <li>Li Element: A</li>
@@ -52,7 +48,7 @@ export const INDEX_StaticToTest = () => {
           <li>Li Element: C</li>
         </ol>
       </nav>
-
+      "
       <a
         href="https://duckduckgo.com/"
         target="_blank"
@@ -60,14 +56,12 @@ export const INDEX_StaticToTest = () => {
         rel="noreferrer">
         Some link to duckduckgo with anchor tag element
       </a>
-
       <Link
         href="https://bing.com"
         target="_blank"
         referrerPolicy="no-referrer">
         Some link to duckduckgo with NEXTJS 13 element
       </Link>
-
       <img
         // src={Pigeon_WEBP}
         src="public/norway.jpg"
@@ -83,7 +77,6 @@ export const INDEX_StaticToTest = () => {
           height={9999}
         />
       </div>
-
       <Image
         src={Norway}
         alt="some image of a Norwegian place"
@@ -99,7 +92,6 @@ export const INDEX_StaticToTest = () => {
         height={9999}
         data-testid="special image"
       />
-
       <Image
         src={Norway_SVG}
         alt="Norway flag"
@@ -108,7 +100,6 @@ export const INDEX_StaticToTest = () => {
         width={9999}
         height={9999}
       />
-
       <div>
         <input
           data-testid="input"
@@ -122,7 +113,6 @@ export const INDEX_StaticToTest = () => {
             type="checkbox"
           />
         </label>
-
         <label data-testid="second_label">
           Second checkbox
           <input
@@ -130,7 +120,6 @@ export const INDEX_StaticToTest = () => {
             type="checkbox"
           />
         </label>
-
         <label data-testid="parent of color">
           Parent of color
           <input
@@ -141,13 +130,11 @@ export const INDEX_StaticToTest = () => {
             aria-label="color_input_here"
           />
         </label>
-
         <label
           data-testid="date_input"
           htmlFor="date_here">
           DATE HERE
         </label>
-
         <input
           data-testid="date_input"
           aria-label="date_input_here"
@@ -199,7 +186,6 @@ export const INDEX_StaticToTest = () => {
           data-testid="input"
           type="reset"
         />
-
         <input
           data-testid="input"
           type="search"
@@ -224,7 +210,6 @@ export const INDEX_StaticToTest = () => {
           data-testid="input"
           type="week"
         />
-
         <input
           data-testid="input"
           type="text"
@@ -235,10 +220,8 @@ export const INDEX_StaticToTest = () => {
         />
         <textarea />
       </div>
-
       <aside data-testid="specific aside">Some Random text, Aside</aside>
       <aside>Second aside</aside>
-
       <form>
         <label>
           This is the label
@@ -249,32 +232,25 @@ export const INDEX_StaticToTest = () => {
           />
         </label>
       </form>
-
       <details data-testid="detail">
         <summary data-testid="summary">
           Some details here, this is the sumary
         </summary>
         This is displayed on open without any on it
       </details>
-
       <DialogComponent />
-
       <p>Some new paragraph, minor change</p>
       <p>Some new paragraph, minor change</p>
-
       {/* <Norway_Func /> */}
-
       {/* If is NOT a descendant of `article`, `aside`, `main`, `nav` or `section` is `role=generic`  */}
       <footer
         data-testid="footer without article as father"
         aria-label="footer without article as father - aria">
         <p>Some footer text here</p>
-
         <p>
           Text of paragraph <span>and a text inside the P HTML TAG</span>
         </p>
       </footer>
-
       {/* If is a descendant of `article`, `aside`, `main`, `nav` or `section` is `role=article`, but the `role=article` is in the tag element header and article   */}
       <article>
         <footer>
