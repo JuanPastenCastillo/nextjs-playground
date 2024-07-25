@@ -11,55 +11,21 @@ concurrency:
 
 jobs:
   tests_setup:
-    name: Build and after that playwright on preview Vercel
-    timeout-minutes: 3
+    name: Test setup
+    timeout-minutes: 5
     runs-on: ubuntu-22.04
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: build
-        run: npm run build
-
       - name: Wait for Vercel preview deployment to be ready
         uses: patrickedqvist/wait-for-vercel-preview@v1.3.1 # https://github.com/patrickedqvist/wait-for-vercel-preview
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 180
+          max_timeout: 300
       - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
-
-      # - name: Install Playwright Browsers
-      #   run: npx playwright install --with-deps
-
-      # - name: Run Playwright tests
-      #   run: npx playwright test
-      #   env:
-      #     BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
-
-      # - uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: playwright-report
-      #     path: playwright-report/
-      #     retention-days: 30
-
-  tests:
-    needs: tests_setup
-    name: Playwright tests
-    timeout-minutes: 5
-    runs-on: ubuntu-22.04
-    steps:
-      - run: echo ${{ needs.test_setup.steps.waitForVercelPreviewDeployment.outputs.url }}
-      - run: echo ${{steps.waitForVercelPreviewDeployment.outputs.url}}
-      - run: echo ${{ needs.test_setup.outputs.url }}
       - run: echo ${{ github.event.deployment_status.environment_url }}
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -75,7 +41,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          BASE_URL: ${{ needs.test_setup.steps.waitForVercelPreviewDeployment.outputs.url }}
+          BASE_URL: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
 
       - uses: actions/upload-artifact@v4
         if: always()
