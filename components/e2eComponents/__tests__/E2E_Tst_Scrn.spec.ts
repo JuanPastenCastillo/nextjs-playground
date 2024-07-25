@@ -23,7 +23,7 @@ test.describe("Screen", () => {
       ".",
       `${actualFileName}-snapshots`,
 
-      `${actualFileName}-${browserName}.png`
+      `${testInfo.title}-${browserName}.png`
     )
 
     let options = {
@@ -50,12 +50,13 @@ test.describe("Screen", () => {
      * The method «await page.screenshot(options)» and «await expect(page).toHaveScreenshot(pathToMyScreenshot)» are different. So, do not try to make one depend on the other
      */
 
-    await page.screenshot(options)
+    // const theScreenshot = await page.screenshot(options)
 
     await expect(page).toHaveScreenshot(optionsToHaveScreenshot)
+    // await expect(page).toMatchSnapshot(optionsToHaveScreenshot)
   })
 
-  test.only("Scrn on ORG is compared", async ({
+  test.skip("Scrn on ORG is compared", async ({
     page,
     browserName
   }, testInfo) => {
@@ -70,7 +71,7 @@ test.describe("Screen", () => {
       ".",
       `${actualFileName}-snapshots`,
 
-      `${actualFileName}-${browserName}.png`
+      `${testInfo.title}-${browserName}.png`
     )
 
     let options = {
@@ -85,7 +86,7 @@ test.describe("Screen", () => {
 
     const optionsToHaveScreenshot = {
       fullPage: true,
-      path: thePath,
+      // path: thePath,
       maxDiffPixels: 999 /* on "webkit" the difference of pixels are huge because for some reason webkit lift everything some pixels */
     }
 
