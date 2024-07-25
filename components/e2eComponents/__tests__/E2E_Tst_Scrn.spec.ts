@@ -21,8 +21,9 @@ test.describe("Screen", () => {
     const thePath = path.join(
       __dirname,
       ".",
-      "home",
-      `${actualFileName}-${testInfo.title}-${browserName}-${platform}.png`
+      `${actualFileName}-snapshots`,
+
+      `${actualFileName}-${browserName}.png`
     )
 
     let options = {
@@ -67,8 +68,9 @@ test.describe("Screen", () => {
     const thePath = path.join(
       __dirname,
       ".",
-      "home",
-      `${actualFileName}-${testInfo.title}-${browserName}-${platform}.png`
+      `${actualFileName}-snapshots`,
+
+      `${actualFileName}-${browserName}.png`
     )
 
     let options = {
