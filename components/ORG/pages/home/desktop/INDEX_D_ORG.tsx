@@ -5,7 +5,7 @@ export const INDEX_D_ORG = () => {
 
   return (
     <>
-      <h2>ORG 1° page</h2>
+      <h2>ORG 1° page 🔰🔰🔰🔰🔰🔰🔰</h2>
       <nav>Inner navigation bar here</nav>
 
       <div>Some cards and so on</div>

@@ -8,19 +8,19 @@ export const Dialog_D_Implemenetation = () => {
     closeDialog,
     refToCloseDialogClickingOutside,
     useHide,
-    checkModalIsOpen,
+    checkModalIsOpen
   } = useDialogLogic()
 
   return (
     <div>
-      <p>Currenyly, the modal is:</p>
-      <p data-testid="dialog-status">{String(checkModalIsOpen)}</p>
+      <p>Currently, the modal is:</p>
+      <p data-testid='dialog-status'>{String(checkModalIsOpen)}</p>
 
       <button
         onClick={(e) => openDialog({ event: e })}
         onKeyDown={(e) => openDialog({ event: e })}
         tabIndex={0}
-        data-testid="dialog-open">
+        data-testid='dialog-open'>
         Open Dialog!
       </button>
 

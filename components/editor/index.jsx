@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { dataSelectedUtil } from "./dataSelectedUtil"
 import styles from "./editorCSS.module.css"
 
+let ID_COUNTER = new Date()
 export const Editor = () => {
   const [content, setContent] = useState("Type here...")
 
@@ -23,20 +24,35 @@ export const Editor = () => {
     // Add the new range to the selection
     selection.addRange(range)
   }
+  /* 
+  !FH0
+  Example on how to work:
+  
+  - If the text selected doesn't have bold, apply bold
+  - If the text selected have bold, doesn't apply bold
+  - If the text selected some part have bold and the other part doesn't, apply bold to everyone without duplication
+  
+  */
 
   const handleToBold = (e) => {
+    /* 
+    !FH0
+    - Avoid nesting HTML elements
+    - Make a toggle bold
+    */
+
     if (
       e.type === "click" ||
       (e.code === "KeyB" && e.key === "b" && e.type === "keydown" && e.ctrlKey)
     ) {
       e.preventDefault()
       let selection = window.getSelection()
-      // console.log("selection:", selection)
+      if (selection.toString() === "") return
+
+      /*
       let cloned = selection.getRangeAt(0).cloneContents()
-      // console.log("cloned:", cloned)
       let textWithTags = Array.from(cloned.childNodes).map((x) => {
         if (x.nodeType === 1) {
-          // let replaceText = x.outerHTML.replace(x.outerText, `${x.outerText}`)
           return x.outerHTML
         }
 
@@ -45,18 +61,117 @@ export const Editor = () => {
         }
       })
 
-      let textWithTagsFormatted = `<span class="${
-        styles.bold
-      }">${textWithTags.join("")}</span>`
+      // console.log('textWithTags:', textWithTags)
+
+      let { theStyles } = dataSelectedUtil({
+        whichPress: "bold",
+        selection,
+      })
+
+      // console.log("theStyles:", theStyles)
+
+      let theOuterHTML =
+        selection?.focusNode?.classList?.contains(`${styles.editor}`) ||
+        selection?.focusNode?.outerHTML === undefined
+          ? null
+          : selection.focusNode.outerHTML
+
+      let toDOM = theOuterHTML || textWithTags.join("")
+      // console.log("toDOM:", toDOM)
+
+      let elementHaveID = selection.anchorNode.id?.startsWith("span-")
+      // console.log("elementHaveID:", elementHaveID)
+
+      let uniqueId = `span-${ID_COUNTER++}`
+      let textWithTagsFormatted = `<span class="${theStyles}" id="${uniqueId}">${toDOM}</span>`
 
       document.execCommand("insertHTML", false, textWithTagsFormatted)
 
-      selection.setBaseAndExtent(
-        selection.anchorNode,
-        0,
-        selection.focusNode,
-        selection.focusOffset,
-      )
+      // selection.setBaseAndExtent(
+      //   selection.anchorNode,
+      //   0,
+      //   selection.focusNode,
+      //   selection.focusOffset,
+      // )
+
+      let spanElement = document.querySelector(`#${uniqueId}`)
+      let newRange = document.createRange()
+      newRange.selectNodeContents(spanElement)
+      selection.removeAllRanges()
+      selection.addRange(newRange)
+      */
+
+      let cloned = selection.getRangeAt(0).cloneContents()
+
+      let textWithTags = Array.from(cloned.childNodes).map((x) => {
+        if (x.nodeType === 1) {
+          // return x.outerHTML
+          // let cloned = x.childNodes.cloneContents()
+          // console.log("cloned:", cloned)
+          let theChildNodes = Array.from(x.childNodes)
+
+          if (theChildNodes.length > 1) {
+            return x.outerHTML
+          }
+
+          if (selection.focusNode?.classList?.contains(`${styles.editor}`)) {
+            /* Prevent the nesting when the user click more times when the text keep selected after the to24px style */
+            return x.outerHTML
+          }
+
+          let theText = x.textContent
+          let theTag = x.tagName.toLowerCase()
+          let theClasses = x.classList.value
+
+          return `<${theTag} class="${theClasses}">${theText}</${theTag}>`
+        }
+
+        if (x.nodeType === 3) {
+          return x.nodeValue
+        }
+      })
+
+      let elementHaveID = selection.anchorNode.id?.startsWith("span-")
+
+      let actualID = selection.anchorNode.id
+
+      let ID_SUMMED = !elementHaveID ? `span-${ID_COUNTER++}` : actualID
+
+      let theOuterHTML =
+        selection?.focusNode?.classList?.contains(`${styles.editor}`) ||
+        selection?.focusNode?.outerHTML === undefined
+          ? null
+          : selection.focusNode.outerHTML
+
+      let the24pxStyle = new RegExp(styles.bold)
+      let parentHave24pxStyle = Array.from(cloned.childNodes)
+
+      const actualTextWithTagsHave24pxStyle = textWithTags
+        .filter((x) => x.trim() !== "")
+        .every((x) => the24pxStyle.test(x))
+
+      if (actualTextWithTagsHave24pxStyle) {
+        return
+      }
+
+      let toDOM = theOuterHTML || textWithTags.join("")
+
+      let { theStyles } = dataSelectedUtil({
+        whichPress: "bold",
+        selection,
+      })
+
+      let textWithTagsFormatted = `<span class="${theStyles}" id="${ID_SUMMED}">${toDOM}</span>`
+
+      // console.log("selection:", selection)
+      document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+      // console.log("ID_SUMMED:", ID_SUMMED)
+      let spanElement = document.querySelector(`#${ID_SUMMED}`)
+      let newRange = document.createRange()
+      newRange.selectNodeContents(spanElement)
+      selection.removeAllRanges()
+      selection.addRange(newRange)
     }
   }
 
@@ -68,31 +183,35 @@ export const Editor = () => {
       e.preventDefault()
       let selection = window.getSelection()
 
-      let cloned = selection.getRangeAt(0).cloneContents()
+      // let cloned = selection.getRangeAt(0).cloneContents()
+      // let textWithTags = Array.from(cloned.childNodes).map((x) => {
+      //   if (x.nodeType === 1) {
+      //     /*
+      //     let replaceText = x.outerHTML.replace(
+      //       x.outerText,
+      //       `<i>${x.outerText}</i>`,
+      //     )
 
-      /* 
-        !FH0 if:
-          - One element do not have the ITALIC, apply it to everyone but without duplication
-          - Everyone have the ITALIC applied, remove it for everyone
-          - ✅Do not remove bold or underline if another italic is already applied
-        */
+      //     return replaceText
+      //     */
 
-      let textWithTags = Array.from(cloned.childNodes).map((x) => {
-        if (x.nodeType === 1) {
-          let replaceText = x.outerHTML.replace(
-            x.outerText,
-            `<i>${x.outerText}</i>`,
-          )
+      //     return x.outerHTML
+      //   }
 
-          return replaceText
-        }
+      //   if (x.nodeType === 3) {
+      //     // return `<i>${x.nodeValue}</i>`
+      //     return x.nodeValue
+      //   }
+      // })
 
-        if (x.nodeType === 3) {
-          return `<i>${x.nodeValue}</i>`
-        }
+      let { theStyles } = dataSelectedUtil({
+        whichPress: "italic",
+        selection,
       })
 
-      document.execCommand("insertHTML", false, textWithTags.join(""))
+      let textWithTagsFormatted = `<span class="${theStyles}">${selection.toString()}</span>`
+
+      document.execCommand("insertHTML", false, textWithTagsFormatted)
 
       selection.setBaseAndExtent(
         selection.anchorNode,
@@ -113,7 +232,7 @@ export const Editor = () => {
       // console.log("selection:", selection, selection.getRangeAt(0))
 
       let cloned = selection.getRangeAt(0).cloneContents()
-      console.log("cloned:", cloned)
+      // console.log("cloned:", cloned)
 
       // let textWithTags = Array.from(cloned.childNodes).map((x) => {
       //   if (x.nodeType === 1) {
@@ -149,7 +268,7 @@ export const Editor = () => {
         }
       })
 
-      console.log("textWithTags:", textWithTags)
+      // console.log("textWithTags:", textWithTags)
 
       let textWithTagsFormatted = `<span class="${
         styles.underline
@@ -159,13 +278,13 @@ export const Editor = () => {
 
       // document.execCommand("insertHTML", false, textWithTags.join(""))
 
-      console.log("selection:", selection)
-      selection.setBaseAndExtent(
-        selection.anchorNode,
-        0,
-        selection.focusNode,
-        selection.focusOffset,
-      )
+      // console.log("selection:", selection)
+      // selection.setBaseAndExtent(
+      //   selection.anchorNode,
+      //   0,
+      //   selection.focusNode,
+      //   selection.focusOffset,
+      // )
     }
   }
 
@@ -243,9 +362,9 @@ export const Editor = () => {
 
     let dataCopiedHaveHTMLOnIt = e.clipboardData.getData("text/html")
     let parser = new DOMParser()
-    console.log("parser:", parser)
+    // console.log("parser:", parser)
     let doc = parser.parseFromString(dataCopiedHaveHTMLOnIt, "text/html")
-    console.log("doc:", doc)
+    // console.log("doc:", doc)
     let selection = window.getSelection()
     let stringSelected = selection.toString()
 
@@ -299,7 +418,7 @@ export const Editor = () => {
       },
     )
 
-    console.log("textWithTags:", textWithTags)
+    // console.log("textWithTags:", textWithTags)
     let textWithTagsFormatted = `<a target="_blank" href="${dataInClipboard}" class="${
       styles.link
     }">${
@@ -338,42 +457,240 @@ export const Editor = () => {
     setHTMLToRender()
   }
 
-  const handleFont24px = (e) => {
+  const handleFont24px = async (e) => {
     e.preventDefault()
+    /* 
+    !FH0
+    - If the text already have this style do nothing
+    - Eliminate the previous ID if a new style is applied
+    - Prevent the nesting when the user click more times when the text keep selected after the to24px style
+    */
+
     let selection = window.getSelection()
-    let stringSelected2 = selection.toString()
+    if (selection.toString() === "") return
+
+    let cloned = selection.getRangeAt(0).cloneContents()
+
+    let textWithTags = Array.from(cloned.childNodes).map((x) => {
+      if (x.nodeType === 1) {
+        // return x.outerHTML
+        // let cloned = x.childNodes.cloneContents()
+        // console.log("cloned:", cloned)
+        let theChildNodes = Array.from(x.childNodes)
+
+        if (theChildNodes.length > 1) {
+          return x.outerHTML
+        }
+
+        if (selection.focusNode?.classList?.contains(`${styles.editor}`)) {
+          /* Prevent the nesting when the user click more times when the text keep selected after the to24px style */
+          return x.outerHTML
+        }
+
+        let theText = x.textContent
+        let theTag = x.tagName.toLowerCase()
+        let theClasses = x.classList.value
+
+        return `<${theTag} class="${theClasses}">${theText}</${theTag}>`
+      }
+
+      if (x.nodeType === 3) {
+        return x.nodeValue
+      }
+    })
+
+    let elementHaveID = selection.anchorNode.id?.startsWith("span-")
+
+    let actualID = selection.anchorNode.id
+
+    let ID_SUMMED = !elementHaveID ? `span-${ID_COUNTER++}` : actualID
+
+    let theOuterHTML =
+      selection?.focusNode?.classList?.contains(`${styles.editor}`) ||
+      selection?.focusNode?.outerHTML === undefined
+        ? null
+        : selection.focusNode.outerHTML
+
+    let the24pxStyle = new RegExp(styles.to24px)
+    let parentHave24pxStyle = Array.from(cloned.childNodes)
+
+    const actualTextWithTagsHave24pxStyle = textWithTags
+      .filter((x) => x.trim() !== "")
+      .every((x) => the24pxStyle.test(x))
+
+    if (actualTextWithTagsHave24pxStyle) {
+      return
+    }
+
+    let toDOM = theOuterHTML || textWithTags.join("")
 
     let { theStyles } = dataSelectedUtil({
       whichPress: "to24px",
       selection,
     })
 
+    let textWithTagsFormatted = `<span class="${styles.to24px}" id="${ID_SUMMED}">${toDOM}</span>`
+
+    // console.log("selection:", selection)
+    document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+    // console.log("ID_SUMMED:", ID_SUMMED)
+    let spanElement = document.querySelector(`#${ID_SUMMED}`)
+    let newRange = document.createRange()
+    newRange.selectNodeContents(spanElement)
+    selection.removeAllRanges()
+    selection.addRange(newRange)
+
+    // selection.setBaseAndExtent(
+    //   selection.anchorNode,
+    //   0,
+    //   selection.focusNode,
+    //   selection.focusOffset,
+    // )
+
+    /*
+    document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+    let spanElement = document.querySelector(`#${uniqueId}`)
+    let newRange = document.createRange()
+    newRange.selectNodeContents(spanElement)
+    selection.removeAllRanges()
+    selection.addRange(newRange)
+    */
+
+    /*
+    console.log(
+      "selection:",
+      selection,
+      selection.toString(),
+      textWithTagsFormatted,
+      cloned,
+      textWithTags,
+    )
+    */
+
+    // selection.setBaseAndExtent(
+    //   selection.anchorNode,
+    //   0,
+    //   selection.focusNode,
+    //   selection.focusOffset,
+    // )
+
+    // if (selection?.focusNode.contentEditable) {
+
+    //   let cloned = selection.getRangeAt(0).cloneContents()
+    //   let textWithTags = Array.from(cloned.childNodes).map((x) => {
+    //     if (x.nodeType === 1) {
+    //       // let replaceText = x.outerHTML.replace(x.outerText, `${x.outerText}`)
+    //       return x.outerHTML
+    //     }
+
+    //     if (x.nodeType === 3) {
+    //       return x.nodeValue
+    //     }
+    //   })
+
+    //   console.log("textWithTags:", textWithTags, textWithTags.join(" "))
+
+    //   let textWithTagsFormatted = `<span class="${
+    //     styles.to24px
+    //   }">${textWithTags.join("")}</span>`
+
+    //   console.log("💜textWithTagsFormatted:", textWithTagsFormatted)
+
+    //   document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+    //   // selection.setBaseAndExtent(
+    //   //   selection.anchorNode,
+    //   //   0,
+    //   //   selection.focusNode,
+    //   //   selection.focusOffset,
+    //   // )
+
+    //   return
+    // }
+
+    // console.log("textWithTags:", textWithTags)
+
+    /*
+    let { theStyles } = dataSelectedUtil({
+      whichPress: "to24px",
+      selection,
+    })
+
+    console.log("💙", HTMLToRender, theStyles, selection.toString())
+
+    let textWithTagsFormatted = `<span class="${theStyles}">${selection.toString()}</span>`
+
+    document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+    selection.setBaseAndExtent(
+      selection.anchorNode,
+      0,
+      selection.focusNode,
+      selection.focusOffset,
+    )
+    */
+
+    /*
     let wrappedselection = `<${HTMLToRender.tag} ${HTMLToRender.props} class="${theStyles}">${stringSelected2}</${HTMLToRender.tag}>`
 
     document.execCommand("insertHTML", false, wrappedselection)
     setHTMLToRender()
+    */
   }
 
   const handleFont64px = (e) => {
     e.preventDefault()
     let selection = window.getSelection()
-    let stringSelected2 = selection.toString()
+    if (selection.toString() === "") return
+    // let stringSelected2 = selection.toString()
 
+    /*
     let { theStyles } = dataSelectedUtil({
       whichPress: "to64px",
       selection,
     })
 
-    // console.log("theStyles:", theStyles)
-    // console.log()
+    let textWithTagsFormatted = `<span class="${theStyles}">${selection.toString()}</span>`
 
+    document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+    selection.setBaseAndExtent(
+      selection.anchorNode,
+      0,
+      selection.focusNode,
+      selection.focusOffset,
+    )
+    */
+
+    let cloned = selection.getRangeAt(0).cloneContents()
+    let textWithTags = Array.from(cloned.childNodes).map((x) => {
+      if (x.nodeType === 1) {
+        // let replaceText = x.outerHTML.replace(x.outerText, `${x.outerText}`)
+        return x.outerHTML
+      }
+
+      if (x.nodeType === 3) {
+        return x.nodeValue
+      }
+    })
+
+    // console.log("textWithTags:", textWithTags.join(" "))
+
+    let textWithTagsFormatted = `<span class="${
+      styles.to64px
+    }">${textWithTags.join("")}</span>`
+
+    document.execCommand("insertHTML", false, textWithTagsFormatted)
+
+    /*
     let wrappedselection = `<${HTMLToRender.tag} ${HTMLToRender.props} class="${theStyles}">${stringSelected2}</${HTMLToRender.tag}>`
 
     document.execCommand("insertHTML", false, wrappedselection)
     setHTMLToRender()
+    */
   }
-
-  // console.log("HTMLToRender:", HTMLToRender)
 
   const handleSelectExecCommand = (e) => {
     /* This method allow to know which HTMLElement is selected: anchor tag or other */
@@ -404,23 +721,29 @@ export const Editor = () => {
     }
   }
 
-  const [changeState, setChangeState] = useState("")
-  const [actualSelection, setActualSelection] = useState("")
-
-  const handleChangeState = ({ event }) => {
-    setChangeState(event.target.value)
-  }
-
   const handleOnSelect = ({ e }) => {
-    const selection = e.target.value.substring(
-      e.target.selectionStart,
-      e.target.selectionEnd,
-    )
-    setActualSelection(selection)
+    // console.log("e:", e)
+    // const selection = e.target.value.substring(
+    //   e.target.selectionStart,
+    //   e.target.selectionEnd,
+    // )
+    // setActualSelection(selection)
   }
+
+  const textRef = useRef(null)
+
+  useEffect(() => {
+    // Assuming you have a function to insert the HTML
+    // insertHTML();
+
+    // Focus on the container element after it's inserted
+    if (textRef.current) {
+      // console.log("textRef.current:", textRef.current)
+    }
+  }, [textRef])
 
   return (
-    <div className={styles.default}>
+    <div>
       <div
         suppressContentEditableWarning
         contentEditable
@@ -428,7 +751,8 @@ export const Editor = () => {
         onChange={handleChange}
         onPaste={handlePaste}
         onSelect={handleSelectExecCommand}
-        className={styles.editor}>
+        className={styles.editor}
+        ref={textRef}>
         {content}
       </div>
 
@@ -438,12 +762,16 @@ export const Editor = () => {
         <button onClick={handleToItalic}>Italic</button>
         <button onClick={handleToUnderline}>underline</button>
         <select>
-          <option>Size </option>
+          <option>Size</option>
+          <option>Only 24 and 64 are working</option>
           <option>16px</option>
-          <option>24px</option>
+          <option onClick={handleFont24px}>24px</option>
           <option>48px</option>
-          <option>64px</option>
+          <option onClick={handleFont64px}>64px</option>
         </select>
+
+        <button onClick={handleFont24px}>24px</button>
+        <button onClick={handleFont64px}>64px</button>
 
         {/* <button onClick={handleFont16px}>To 16px</button>
         <button onClick={handleFont24px}>To 24px</button>

@@ -1,5 +1,9 @@
 .bold {
-  font-weight: 800 !important;
+  font-weight: 600 !important;
+}
+
+.bold * {
+  font-weight: 600 !important;
 }
 
 .italic {
@@ -22,7 +26,15 @@
   font-size: 24px !important;
 }
 
+.to24px * {
+  font-size: 24px !important;
+}
+
 .to64px {
+  font-size: 64px !important;
+}
+
+.to64px * {
   font-size: 64px !important;
 }
 
@@ -48,6 +60,7 @@
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
+  white-space: pre-wrap;
 }
 
 .editor {

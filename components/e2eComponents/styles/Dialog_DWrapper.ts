@@ -9,8 +9,6 @@ export const dialogCSS = () => css`
 `
 
 export const Dialog_DWrapper = styled.dialog`
-  /* ${dialogCSS()}; */
-
   margin: auto;
 
   &::backdrop {

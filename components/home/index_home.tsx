@@ -6,7 +6,7 @@ export const Index_Home = () => {
 
   return (
     <INDEX_HOMEWrapper>
-      <h1>Home CHANGED!!🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩</h1>
+      <h1>Home CHANGED!!✨✨✨✨✨✨✨✨✨✨✨</h1>
 
       <INDEX_StaticToTest />
     </INDEX_HOMEWrapper>
