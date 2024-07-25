@@ -19,10 +19,10 @@ test.describe("Screen", () => {
     const actualFileName = path.basename(__filename)
 
     const thePath = path.join(
-      // __dirname,
+      __dirname,
       ".",
-      `${actualFileName}-snapshots` /* It seems the CI looks here */,
-      `${testInfo.title}-1-${browserName}-${platform}.png`
+      "home",
+      `${actualFileName}-${testInfo.title}-${browserName}-${platform}.png`
     )
 
     let options = {
@@ -65,10 +65,10 @@ test.describe("Screen", () => {
     const actualFileName = path.basename(__filename)
 
     const thePath = path.join(
-      // __dirname,
+      __dirname,
       ".",
-      `${actualFileName}-snapshots` /* It seems the CI looks here */,
-      `${testInfo.title}-1-${browserName}-${platform}.png`
+      "home",
+      `${actualFileName}-${testInfo.title}-${browserName}-${platform}.png`
     )
 
     let options = {
