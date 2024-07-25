@@ -26,7 +26,7 @@ test.describe("Screen", () => {
       ".",
       `${actualFileName}-snapshots`,
 
-      `${testInfo.title}-${browserName}-${os.platform()}.png`
+      `${testInfo.title}-${browserName}-linux.png`
     )
 
     let options = {
