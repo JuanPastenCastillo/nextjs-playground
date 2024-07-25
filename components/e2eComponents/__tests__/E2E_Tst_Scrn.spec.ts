@@ -18,12 +18,15 @@ test.describe("Screen", () => {
 
     const actualFileName = path.basename(__filename)
 
+    // console.log("🟥🟥🟥🟥🟥testInfo.snapshotDir:", )
+    // console.log('os.platform():', os.platform())
+
     const thePath = path.join(
-      __dirname,
+      testInfo.snapshotDir,
       ".",
       `${actualFileName}-snapshots`,
 
-      `${testInfo.title}-${browserName}.png`
+      `${testInfo.title}-${browserName}-${os.platform()}.png`
     )
 
     let options = {
