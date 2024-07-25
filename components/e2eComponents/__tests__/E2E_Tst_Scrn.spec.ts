@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import os from "os"
 import * as path from "path"
 
 test.describe("Screen", () => {
@@ -7,17 +8,21 @@ test.describe("Screen", () => {
   })
 
   /* This test, with the "toHaveScreenshot" is the only one that can make a fullpage screnshots and compre it with the snapshot. With this, it make sense to apply this on the Github Actions  */
-  test.only("Scrn on index is compared", async ({ page, browserName }) => {
-    await page.goto("")
+  test.only("Scrn on index is compared", async ({
+    page,
+    browserName
+  }, testInfo) => {
+    await page.goto("/")
+
+    const platform = os.platform()
 
     const actualFileName = path.basename(__filename)
 
     const thePath = path.join(
-      __dirname,
+      // __dirname,
       ".",
-      `${actualFileName}-full111`,
-      "home",
-      `${actualFileName}-${browserName}-home.png`
+      `${actualFileName}-snapshots` /* It seems the CI looks here */,
+      `${testInfo.title}-1-${browserName}-${platform}.png`
     )
 
     let options = {
@@ -49,17 +54,21 @@ test.describe("Screen", () => {
     await expect(page).toHaveScreenshot(optionsToHaveScreenshot)
   })
 
-  test.only("Scrn on ORG is compared", async ({ page, browserName }) => {
+  test.only("Scrn on ORG is compared", async ({
+    page,
+    browserName
+  }, testInfo) => {
     await page.goto("/ORG")
+
+    const platform = os.platform()
 
     const actualFileName = path.basename(__filename)
 
     const thePath = path.join(
-      __dirname,
+      // __dirname,
       ".",
-      `${actualFileName}-full111`,
-      "org",
-      `${actualFileName}-${browserName}-org.png`
+      `${actualFileName}-snapshots` /* It seems the CI looks here */,
+      `${testInfo.title}-1-${browserName}-${platform}.png`
     )
 
     let options = {
@@ -99,6 +108,7 @@ test.describe("Screen", () => {
       type: "screenshot of full page on some image",
       description: `By defaullt just trigger this test is going to make it on chromium, firefox and webkit (because the «playwright.config.ts» on the key «projects») but if you want to really be sure that this test is going to be trigger on those browsers, you can run this command: «npx playwright test --project webkit --project firefox --project chromium <file_that_have_the_screenshot>» where "firefox", "chromium" and "webkit" are the browser names and <file_that_have_the_screenshot> is the name of the test file that have the method «page.screenshot(options)»`
     })
+
     await page.goto("")
 
     let actualFileName = path.basename(__filename)
