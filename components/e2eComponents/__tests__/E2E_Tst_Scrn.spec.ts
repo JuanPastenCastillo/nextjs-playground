@@ -8,7 +8,7 @@ test.describe("Screen", () => {
   })
 
   /* This test, with the "toHaveScreenshot" is the only one that can make a fullpage screnshots and compre it with the snapshot. With this, it make sense to apply this on the Github Actions  */
-  test.only("Scrn on index is compared", async ({
+  test.skip("Scrn on index is compared", async ({
     page,
     browserName
   }, testInfo) => {
@@ -26,7 +26,7 @@ test.describe("Screen", () => {
       ".",
       `${actualFileName}-snapshots`,
 
-      `${testInfo.title}-${browserName}-linux.png`
+      `${testInfo.title}-${browserName}.png`
     )
 
     let options = {
@@ -140,10 +140,16 @@ test.describe("Screen", () => {
     await page.screenshot(options)
   })
 
-  test.skip("Check with fullPage", async ({ page, browserName }) => {
+  test.only("Check with fullPage", async ({ page, browserName }, testInfo) => {
     await page.goto("")
 
     const actualFileName = path.basename(__filename)
+
+    const thePath = path.join(
+      testInfo.snapshotDir,
+      ".",
+      `${testInfo.title}-${browserName}.png`
+    )
 
     const screenshotPath = path.join(
       "./__screenshots__",
@@ -153,12 +159,15 @@ test.describe("Screen", () => {
 
     const actualOptionsSnapshot = {
       maxDiffPixels: 15,
-      path: screenshotPath,
+      path: thePath,
       fullPage: true,
-      name: "E2E_Tst_Scrn.spec-toMatchSnapshot"
+      name: `${testInfo.title}-${browserName}.png`
     }
 
-    const screenshot = await page.screenshot({ fullPage: true })
+    const screenshot = await page.screenshot({
+      fullPage: true,
+      path: thePath
+    })
 
     await expect(screenshot).toMatchSnapshot(actualOptionsSnapshot)
 
